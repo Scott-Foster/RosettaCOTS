@@ -1,4 +1,4 @@
-Package: RosettaCOTS #1
+Package: RosettaCOTS
 Type: Package
 Title: Calbration and Translation tool for COTS and Coral measurement tools
 Version: 1.0.0
