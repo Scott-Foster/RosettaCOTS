@@ -1,7 +1,7 @@
 Package: RosettaCOTS
 Type: Package
 Title: Calbration and Translation tool for COTS and Coral measurement tools
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: c(person("Scott", "Foster", role = c("aut", "cre"),
                      email = "scott.foster@data61.csiro.au"))
 Maintainer: Scott Foseter <scott.foster@data61.csiro.au>

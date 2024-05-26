@@ -1,10 +1,12 @@
 
-predSALADFromManta <- function( manta_scars, manta.nTows=4, pred_type="PI", SALADdist=2048.571, intLevel=0.95){
+predSALADFromManta <- function( manta_scars, manta.nTows=4, pred_type="PI", SALADarea=10193.33, intLevel=0.95){
   #manta_scars contains the manta data that is to be predicted from (number of tows with scars seen).
   #manta.nTows is the number of tows in zone.
-  #SALADdist is the total dive distance (over all divers) for the dive.  If not specified the average
+  SALADdist <- SALADarea
+  #SALADarea is the total area searched for the SALAD dive. If not specified the average
   #of the D2 fieldtrips is used.  At site level.  Either one value per site, or a single numeric (to
   #be replicated)
+  #SALADdist is the total dive distance (over all divers) for the dive. Naming for historical reasons.
   
   #I'm hoping that the argument names are self-explanatory
   #pred_type is either "PI" (prediction interval) or "CI" (confidence interval)

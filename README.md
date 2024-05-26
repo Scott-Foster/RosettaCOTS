@@ -19,9 +19,8 @@ coral cover. The COTS measurement methods are:
   into this calibration (not enough COTS seen in the field trip).
 - SALAD: performed by a JCU team, developers and experts in the method.
   Measures number of COTS seen and the number of Scars seen (that
-  weren’t associated with a COTS). Effort is measured as both time and
-  distance, and distance can be multiplied by 10m to give a rough swept
-  area.
+  weren’t associated with a COTS). Whilst a number of different effort
+  metrics are available, we use swept area (unit of metres-squared).
 - eDNA (concentration): performed by an AIMS team, developers and
   experts in the method. This measure is the concentration (quantitative
   measure) from the PCR assay. We note that there is a hierarchy to this

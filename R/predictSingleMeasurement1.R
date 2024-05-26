@@ -104,8 +104,8 @@ predictSingleMeasurement <- function( from, to, from.metric=NULL, from.effort=NU
     ####
     if( tolower(to)=="salad"){
       if( is.null( to.effort)){
-        warning( "SALAD search time not supplied.  Assuming 106.9333 (the average of the CCIP-D2 project data")
-        to.effort <- 106.9333
+        warning( "SALAD swept area not supplied.  Assuming 10193.33 (the average of the CCIP-D2 project data")
+        to.effort <- 10193.33
       }
       predVal.PI <- predSALADFromCULL( cull_density = from.metric / from.effort, SALADBottomTime = to.effort, pred_type = "PI", intLevel = intLevel)
       predVal.CI <- predSALADFromCULL( cull_density = from.metric / from.effort, SALADBottomTime = to.effort, pred_type = "CI", intLevel = intLevel)
@@ -161,8 +161,8 @@ predictSingleMeasurement <- function( from, to, from.metric=NULL, from.effort=NU
     ####
     if( tolower(to)=="salad"){
       if( is.null( to.effort)){
-        warning( "SALAD search distance not supplied.  Assuming 2048.571 (the average of the CCIP-D2 project data")
-        to.effort <- 2048.571
+        warning( "SALAD swept area not supplied.  Assuming 10193.33 (the average of the CCIP-D2 project data")
+        to.effort <- 10193.33
       }
       predVal.PI <- predSALADFromManta( manta_scars = from.metric, manta.nTows=from.effort, SALADdist = to.effort, pred_type = "PI", intLevel = intLevel)
       predVal.CI <- predSALADFromManta( manta_scars = from.metric, manta.nTows=from.effort, SALADdist = to.effort, pred_type = "CI", intLevel = intLevel)
@@ -229,8 +229,8 @@ predictSingleMeasurement <- function( from, to, from.metric=NULL, from.effort=NU
     ####
     if( tolower(to)=="salad"){
       if( is.null( to.effort)){
-        warning( "SALAD search distance not supplied.  Assuming 1.019333 (the average of the CCIP-D2 project data")
-        to.effort <- 1.019333
+        warning( "SALAD swept area not supplied.  Assuming 10193.33 (the average of the CCIP-D2 project data")
+        to.effort <- 10193.33
       }
       predVal.PI <- predSALADFromeDNAconc( eDNA_PCR_conc=from.metric, SALADarea=to.effort, pred_type = "PI", intLevel = intLevel)
       predVal.CI <- predSALADFromeDNAconc( eDNA_PCR_conc=from.metric, SALADarea=to.effort, pred_type = "CI", intLevel = intLevel)
@@ -294,8 +294,8 @@ predictSingleMeasurement <- function( from, to, from.metric=NULL, from.effort=NU
     ####
     if( tolower(to)=="salad"){
       if( is.null( to.effort)){
-        warning( "SALAD search distance not supplied.  Assuming 1.019333 (the average of the CCIP-D2 project data")
-        to.effort <- 1.019333
+        warning( "SALAD swept area not supplied.  Assuming 10193.33 (the average of the CCIP-D2 project data")
+        to.effort <- 10193.33
       }
       predVal.PI <- predSALADFromeDNAbin( av_PCR_binary=from.metric, SALADarea=to.effort, pred_type = "PI", intLevel = intLevel)
       predVal.CI <- predSALADFromeDNAbin( av_PCR_binary=from.metric, SALADarea=to.effort, pred_type = "CI", intLevel = intLevel)
