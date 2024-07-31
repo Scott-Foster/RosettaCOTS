@@ -1,4 +1,4 @@
-export( "COTS_calibrate")
+export( "RosettaCOTS")
 importFrom( "methods", "as", "hasArg")
 importFrom( "stats", "rnbinom", "quantile","rbeta","rbinom")
 importFrom( "readxl", "read_excel")

@@ -26,11 +26,11 @@ The details of the model are presented futher below. As are instructions about h
 
 ### Installation
 
-The `COTS_callibrate` package can be installed using `devtools` R package.
+The `RosettaCOTS` package can be installed using `devtools` R package.
 
 ```{r,eval=FALSE}
 install.packages('devtools')
-devtools::install_github( repo="Scott-Foster/COTS_calibrate")
+devtools::install_github( repo="Scott-Foster/RosettaCOTS")
 ```
 
 ## Funding
