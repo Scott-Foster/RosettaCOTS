@@ -2,7 +2,7 @@
 output: github_document
 bibliography: /home/fos085/zoteroFiles/JabRefPDF/SDFReferences.bib
 csl: /home/fos085/ABARES/RISDM_MS/ecography.csl
----
+---  
 
 ## RosettaCOTS: translation between methods for measuring COTS and Coral Cover
 
