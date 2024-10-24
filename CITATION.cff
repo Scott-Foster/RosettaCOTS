@@ -1,0 +1,28 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: RosettaCOTS
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Scott
+    family-names: Foster
+    email: scott.foster@data61.csiro.au
+    affiliation: 'Data61, CSIRO'
+    orcid: 'https://orcid.org/0000-0002-6719-8002'
+repository-code: 'https://github.com/Scott-Foster/RosettaCOTS'
+abstract: >-
+  RosettaCOTS is an R package that provides the results of a
+  calibration exercise between different methods for
+  measuring COTS and coral cover. Its main function
+  COTS_calibrate is a tool that predicts one measure from
+  another, along with prediction and confidence intervals.
+  RosettaCOTS is built upon data obtained in a CCIP-D2 field
+  trip. It presents the results, in a useful manner, of all
+  pair-wise models of all of the methods that measure COTS
+  and all of the methods that measure coral cover.
+license: GPL-2.0
+commit: 1.0.1
