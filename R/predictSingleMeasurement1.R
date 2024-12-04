@@ -107,8 +107,8 @@ predictSingleMeasurement <- function( from, to, from.metric=NULL, from.effort=NU
         warning( "SALAD swept area not supplied.  Assuming 10193.33 (the average of the CCIP-D2 project data")
         to.effort <- 10193.33
       }
-      predVal.PI <- predSALADFromCULL( cull_density = from.metric / from.effort, SALADBottomTime = to.effort, pred_type = "PI", intLevel = intLevel)
-      predVal.CI <- predSALADFromCULL( cull_density = from.metric / from.effort, SALADBottomTime = to.effort, pred_type = "CI", intLevel = intLevel)
+      predVal.PI <- predSALADFromCULL( cull_density = from.metric / from.effort, SALADArea = to.effort, pred_type = "PI", intLevel = intLevel)
+      predVal.CI <- predSALADFromCULL( cull_density = from.metric / from.effort, SALADArea = to.effort, pred_type = "CI", intLevel = intLevel)
       predVal <- unlist( c( from.metric, from.effort, from.metric/from.effort, to.effort, predVal.CI[, c( "SALAD_density","density_lower","density_upper")], predVal.PI[, c( "density_lower","density_upper")]))
       names( predVal) <- c("CULL_COTS","CULL_EFFORT","CULL_density","SALAD_EFFORT","SALAD_density","lowerCI_SALAD","upperCI_SALAD","lowerPI_SALAD","upperPI_SALAD")
       attr( predVal, "message") <- "Predicting SALAD from CULL. CULL measured in nCots per minute. SALAD also measured in nCOTS per minute."
@@ -164,8 +164,8 @@ predictSingleMeasurement <- function( from, to, from.metric=NULL, from.effort=NU
         warning( "SALAD swept area not supplied.  Assuming 10193.33 (the average of the CCIP-D2 project data")
         to.effort <- 10193.33
       }
-      predVal.PI <- predSALADFromManta( manta_scars = from.metric, manta.nTows=from.effort, SALADdist = to.effort, pred_type = "PI", intLevel = intLevel)
-      predVal.CI <- predSALADFromManta( manta_scars = from.metric, manta.nTows=from.effort, SALADdist = to.effort, pred_type = "CI", intLevel = intLevel)
+      predVal.PI <- predSALADFromManta( manta_scars = from.metric, manta.nTows=from.effort, SALADarea = to.effort, pred_type = "PI", intLevel = intLevel)
+      predVal.CI <- predSALADFromManta( manta_scars = from.metric, manta.nTows=from.effort, SALADarea = to.effort, pred_type = "CI", intLevel = intLevel)
       predVal <- unlist( c( from.metric, from.effort, from.metric/from.effort, to.effort, predVal.CI[, c( "SALAD_density","density_lower","density_upper")], predVal.PI[, c( "density_lower","density_upper")]))
       names( predVal) <- c("Manta_scars","Manta_nTows","Manta_prop","SALAD_EFFORT","SALAD_density","lowerCI_SALAD","upperCI_SALAD","lowerPI_SALAD","upperPI_SALAD")
       attr( predVal, "message") <- "Predicting SALAD from Manta measured in proportion of tows seen scars (input is just scar presence-absence). SALAD measured in nCOTS per metre."

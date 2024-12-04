@@ -5,7 +5,7 @@ predSALADFromCULL <- function( cull_density, pred_type="PI", SALADarea=10193.33,
   
   #I'm hoping that the argument names are self-explanatory
   #pred_type is either "PI" (prediction interval) or "CI" (confidence interval)
-  SALADBottomTIme <- SALADarea
+  SALADBottomTime <- SALADarea
   #SALADBottomArea is the total swept area for a SALAD dive. If not specified the average
   #of the D2 fieldtrips is used.  At site level.  Either one value per site, or a single numeric (to
   #be replicated)

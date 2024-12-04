@@ -21,7 +21,8 @@ COTS_calibrate <- function( from, to, from.metric, from.effort=NULL, to.effort=N
 \item{sites}{A character or factor indicating which observations belong to which sites. This is an important argument. It tells the function which observations should be treated as a group and which ones as different groups. When dealing with data from multiple reefs, make sure that the site labels are unique (e.g. a site "Z_02" may appear at both reefs and has the potential to be 'lumped' together inadvertently).}
 \item{intLevel}{A scalar between 0.5 and 1, usually 0.95, or 0.9. This gives the limit of the confidence and prediction intervals from the prediction.}
 }
-\details{The prediction can only occur within COTS measurements and within Coral measurements. There is no scope for predicting COTS from Coral, and vice-versa.
+\details{
+The prediction can only occur within COTS measurements and within Coral measurements. There is no scope for predicting COTS from Coral, and vice-versa.
 
 The \code{from.metric} and \code{from.effrot} should be (for the different \code{from} sampling tools)
 \describe{
@@ -37,7 +38,8 @@ The \code{from.metric} and \code{from.effrot} should be (for the different \code
 
 The \code{to.effort} argument specifies how much search effort is assumed in the prediction. If NULL (default), then it is assumed to be a sensible value chosen on the basis of the CCIP-D2 field trip.
 }
-\value{A data.frame that contains the relevant summary of the input data, at the site level, and the predicted output data. This includes a point prediction (for output) as well as confidence intervals (how far the mean prediction may vary), and prediction intervals (how much a new observation may vary). It is envisaged that the prediction intervals will be a lot more useful than the confidence intervals, in imagined analyses.
+\value{
+A data.frame that contains the relevant summary of the input data, at the site level, and the predicted output data. This includes a point prediction (for output) as well as confidence intervals (how far the mean prediction may vary), and prediction intervals (how much a new observation may vary). It is envisaged that the prediction intervals will be a lot more useful than the confidence intervals, in imagined analyses.
 }
 
 \examples{
