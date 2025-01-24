@@ -36,7 +36,7 @@ predSALADFromCULL <- function( cull_density, pred_type="PI", SALADarea=10193.33,
     fm.post <- readRDS( system.file("extdata", "samples_SALADFromCull.RDS", package="RosettaCOTS"))
 #    fm.post <- readRDS( "./DataForPreds/samples_SALADFromCull.RDS")
   if( effort_unit=="rate")
-    fm.post <- readRDS( system.file("extdata", "samples_SALADFromCull.RDS", package="RosettaCOTS"))
+    fm.post <- readRDS( system.file("extdata", "samples_SALADFromCull_Rate.RDS", package="RosettaCOTS"))
 #    fm.post <- readRDS( "./DataForPreds/samples_SALADFromCull_Rate.RDS")
   
   samps <- as.matrix( fm.post, iters=TRUE, chains=TRUE)

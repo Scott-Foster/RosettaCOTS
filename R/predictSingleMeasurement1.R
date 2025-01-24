@@ -1,5 +1,5 @@
 
-predictSingleMeasurement <- function( from, to, from.metric=NULL, from.effort=NULL, to.effort=NULL, to.nTows=NULL, intLevel=0.95){
+predictSingleMeasurement <- function( from, to, from.metric=NULL, from.effort=NULL, to.effort=NULL, to.nTows=NULL, intLevel=0.95, SALAD.unit="area"){
   #from is text (e.g. "CULL","SALAD", "Manta", "Manta_coral")
   #to is text, see from.
   #from.metric is a scalar or vector.  It's precise value will depend on what from is.
@@ -103,15 +103,31 @@ predictSingleMeasurement <- function( from, to, from.metric=NULL, from.effort=NU
     }
     ####
     if( tolower(to)=="salad"){
-      if( is.null( to.effort)){
-        warning( "SALAD swept area not supplied.  Assuming 10193.33 (the average of the CCIP-D2 project data")
-        to.effort <- 10193.33
+      if( SALAD.unit=="area"){
+	warning( "Prediction of SALAD is a density (see SALAD.unit argument)")
+	if( is.null( to.effort)){
+	  warning( "SALAD swept area not supplied.  Assuming 10193.33 (the average of the CCIP-D2 project data")
+	  to.effort <- 10193.33
+	}
       }
-      predVal.PI <- predSALADFromCULL( cull_density = from.metric / from.effort, SALADArea = to.effort, pred_type = "PI", intLevel = intLevel)
-      predVal.CI <- predSALADFromCULL( cull_density = from.metric / from.effort, SALADArea = to.effort, pred_type = "CI", intLevel = intLevel)
+      if( SALAD.unit=="rate"){
+	warning( "Prediction of SALAD is a rate (see SALAD.unit argument)")
+	if( is.null( to.effort)){
+	  warning( "SALAD search time not supplied.  Assuming 106.93 (the average of the CCIP-D2 project data")
+	  to.effort <- 106.93
+	}
+      }
+      predVal.PI <- predSALADFromCULL( cull_density = from.metric / from.effort, SALADarea = to.effort, pred_type = "PI", intLevel = intLevel, effort_unit=SALAD.unit)
+      predVal.CI <- predSALADFromCULL( cull_density = from.metric / from.effort, SALADarea = to.effort, pred_type = "CI", intLevel = intLevel, effort_unit=SALAD.unit)
       predVal <- unlist( c( from.metric, from.effort, from.metric/from.effort, to.effort, predVal.CI[, c( "SALAD_density","density_lower","density_upper")], predVal.PI[, c( "density_lower","density_upper")]))
-      names( predVal) <- c("CULL_COTS","CULL_EFFORT","CULL_density","SALAD_EFFORT","SALAD_density","lowerCI_SALAD","upperCI_SALAD","lowerPI_SALAD","upperPI_SALAD")
-      attr( predVal, "message") <- "Predicting SALAD from CULL. CULL measured in nCots per minute. SALAD also measured in nCOTS per minute."
+      if( SALAD.unit=="area"){
+	names( predVal) <- c("CULL_COTS","CULL_EFFORT","CULL_density","SALAD_EFFORT","SALAD_density","lowerCI_SALAD","upperCI_SALAD","lowerPI_SALAD","upperPI_SALAD")
+	attr( predVal, "message") <- "Predicting SALAD from CULL. CULL measured in nCots per minute. SALAD also measured in nCOTS per square metre."
+      }
+      if( SALAD.unit=="rate"){
+	names( predVal) <- c("CULL_COTS","CULL_EFFORT","CULL_density","SALAD_EFFORT","SALAD_rate","lowerCI_SALAD","upperCI_SALAD","lowerPI_SALAD","upperPI_SALAD")
+	attr( predVal, "message") <- "Predicting SALAD from CULL. CULL measured in nCots per minute. SALAD also measured in nCOTS per minute."
+      }
     }
     ####
     if( tolower(to)=="edna_conc"){

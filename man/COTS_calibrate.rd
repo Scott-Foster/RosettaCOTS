@@ -9,17 +9,20 @@ COTS_calibrate <- function( from, to, from.metric, from.effort=NULL, to.effort=N
 	from.metric, from.effort=NULL, 
 	to.effort=NULL, to.nTows=NULL, 
 	sites=NULL, 
-	intLevel=0.95)
+	intLevel=0.95,
+	salad.effort.from.cull = "area"
+	)
 }
 \arguments{
 \item{from}{A string giving the type of measurement to be converted. Options are: "Manta","eDNA_conc","eDNA_prop","coral_transom","coral_deep","coral_manta","SALAD","Cull". Capitalisation should not matter, but the presence of underscores will. See Details below.}
 \item{to}{A string giving the type of the output measurement. Options are the same as \code{from}. If \code{from} and \code{to} are the same, then the \code{from} data are returned with a suitable warning.}
 \item{from.metric}{The observation values for the \code{from} measurement. These are, as far as possible, recorded in the same format as is usually done. See Details below for some further information.}
 \item{from.effort}{The amount of effort for the \code{from.metric} observation. These are, as far as possible, recorded in the same format as it routinely done. The units will change depending on the measuring too. For example, effort for cull dives are measured in minutes, whilst effort for Manta Tows is measured in metres. If NULL (default), AND effort is needed for prediction, then the average of the CCIP-D2 field trip is inserted.}
-\item{to.effort}{The amount of effort that is assumed for the prediction. If NULL (default), AND it is needed for prediction, then the average of the CCIP-D2 field trip is inserted.}
+\item{to.effort}{The amount of effort that is assumed for the prediction. If NULL (default), AND it is needed for prediction, then the average of the CCIP-D2 field trip is inserted. SALAD is a special case here, where to.effort can be either measured in time (for a rate) or area (for a density). For SALAD, the default is area (for density). See argument \code{salad.effort.from.cull} to switch between effort measures.}
 \item{to.nTows}{The number of tows used in the prediction. Only used for manta tows whose measurement is at a tow-level. Default is NULL, which if manta predictions are needed, then 4 is inserted (the average of the CCIP-D2 field trip).}
 \item{sites}{A character or factor indicating which observations belong to which sites. This is an important argument. It tells the function which observations should be treated as a group and which ones as different groups. When dealing with data from multiple reefs, make sure that the site labels are unique (e.g. a site "Z_02" may appear at both reefs and has the potential to be 'lumped' together inadvertently).}
 \item{intLevel}{A scalar between 0.5 and 1, usually 0.95, or 0.9. This gives the limit of the confidence and prediction intervals from the prediction.}
+\item{salad.effort.from.cull = "area"}{A character indicating the units of the to.effort when predicting SALAD. Choices are "area" for density prediction (per m2) and "rate" for rate prediction (per minute). Default is "area". This argument is ignore for all cases, except those with to="SALAD" (prediction from SALAD density to SALAD rate will also not work, and vice versa).}
 }
 \details{
 The prediction can only occur within COTS measurements and within Coral measurements. There is no scope for predicting COTS from Coral, and vice-versa.
@@ -36,7 +39,7 @@ The \code{from.metric} and \code{from.effrot} should be (for the different \code
 \item{coral_transom}{A numeric giving the proporion of coral cover (hard and soft).}
 }
 
-The \code{to.effort} argument specifies how much search effort is assumed in the prediction. If NULL (default), then it is assumed to be a sensible value chosen on the basis of the CCIP-D2 field trip.
+The \code{to.effort} argument specifies how much search effort is assumed in the prediction. If NULL (default), then it is assumed to be a sensible value chosen on the basis of the CCIP-D2 field trip. The units follow the units for the from.metric but note that SALAD is a special case. For SALAD, there is a choice of prediction units; either a density (COTS per m2) or rate (COTS per minute). The choice is specified using the \code{salad.effort.from.cull} argument, with "area" giving a density and "rate" giving, well, a rate.
 }
 \value{
 A data.frame that contains the relevant summary of the input data, at the site level, and the predicted output data. This includes a point prediction (for output) as well as confidence intervals (how far the mean prediction may vary), and prediction intervals (how much a new observation may vary). It is envisaged that the prediction intervals will be a lot more useful than the confidence intervals, in imagined analyses.

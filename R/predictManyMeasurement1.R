@@ -1,5 +1,5 @@
 
-COTS_calibrate <- function( from, to, from.metric, from.effort=NULL, to.effort=NULL, to.nTows=NULL, sites=NULL, intLevel=0.95){
+COTS_calibrate <- function( from, to, from.metric, from.effort=NULL, to.effort=NULL, to.nTows=NULL, sites=NULL, intLevel=0.95, salad.effort.from.cull="area"){
   ####  elementary checking 
   #from.metric and from.effort
   if( is.null( from.metric))
@@ -44,7 +44,7 @@ COTS_calibrate <- function( from, to, from.metric, from.effort=NULL, to.effort=N
     res <- list()  
     for( ii in levels( sites))
       suppressWarnings( res[[ii]] <- predictSingleMeasurement( from=tolower(from), to=tolower(to), from.metric=from.metric[sites==ii], from.effort=from.effort[sites==ii], 
-                                             to.effort=to.effort, to.nTows=to.nTows, intLevel=intLevel))
+                                             to.effort=to.effort, to.nTows=to.nTows, intLevel=intLevel, SALAD.unit=salad.effort.from.cull))
     message( attributes( res[[1]])$message)
     res <- do.call( "rbind",res)
   }
